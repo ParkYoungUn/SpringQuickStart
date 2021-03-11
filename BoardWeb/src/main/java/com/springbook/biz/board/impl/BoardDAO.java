@@ -3,9 +3,15 @@ package com.springbook.biz.board.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import com.springbook.biz.board.BoardVO;
@@ -13,7 +19,7 @@ import com.springbook.biz.common.JDBCUtil;
 
 //DAO(Data Access Object)
 @Repository("boardDAO")
-public class BoardDAO {
+public class BoardDAO extends JdbcDaoSupport {
 	// JDBC 관련 변수
 	private Connection conn = null;
 	private PreparedStatement stmt = null;
@@ -27,6 +33,11 @@ public class BoardDAO {
 	private final String BOARD_GET = "select * from board where seq=?";
 	private final String BOARD_LIST = "select * from board order by seq desc";
 
+	@Autowired
+	public void setSuperDataSource(DataSource dataSource) {
+		super.setDataSource(dataSource);
+	}
+	
 	// CRUD 기능의 메소드 구현
 	// 글 등록
 	public void insertBoard(BoardVO vo) {
@@ -130,3 +141,18 @@ public class BoardDAO {
 	}
 
 }
+
+//class BoardRowMapper implements RowMapper<BoardVO>{
+//	public BoardVO mapRow(ResultSet rs, int rowNum) throws SQLException {
+//		BoardVO board = new BoardVO();
+//		board.setSeq(rs.getInt("SEQ"));
+//		board.setTitle(rs.getString("TITLE"));
+//		board.setWriter(rs.getString("WRITER"));
+//		board.setContent(rs.getString("CONTENT"));
+//		board.setRegDate(rs.getDate("REGDATE"));
+//		board.setCnt(rs.getInt("CNT"));
+//		return board;
+//		
+//	}
+//
+//}

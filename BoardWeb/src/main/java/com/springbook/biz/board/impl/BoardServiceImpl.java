@@ -11,14 +11,13 @@ import com.springbook.biz.common.Log4jAdvice;
 import com.springbook.biz.common.LogAdvice;
 
 @Service("boardService")
-public class BoardServiceImpl implements BoardService {
+public class BoardServiceImpl implements BoardService { // Impl class의 모든 method가 JoinPoint(포인트컷 대상, 포인트컷 후보)
 
 	@Autowired
 	private BoardDAO boardDAO;
 	
 //	private LogAdvice log;
 //	private Log4jAdvice log;
-	
 	
 	public BoardServiceImpl() {
 //		log = new LogAdvice();
@@ -29,6 +28,11 @@ public class BoardServiceImpl implements BoardService {
 	public void insertBoard(BoardVO vo) {
 //		log.printLog();
 //		log.printLogging();
+		
+//		if(vo.getSeq() == 0) {
+//			throw new IllegalArgumentException("0번 글은 등록할 수 없습니다.");
+//		}
+		
 		boardDAO.insertBoard(vo);
 	}
 
