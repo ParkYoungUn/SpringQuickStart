@@ -1,2 +1,2 @@
 # SpringQuickStart
-Spring  repository
+Spring 실습 repository
