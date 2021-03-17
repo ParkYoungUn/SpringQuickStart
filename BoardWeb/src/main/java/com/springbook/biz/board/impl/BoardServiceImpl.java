@@ -14,7 +14,7 @@ import com.springbook.biz.common.LogAdvice;
 public class BoardServiceImpl implements BoardService { // Impl class의 모든 method가 JoinPoint(포인트컷 대상, 포인트컷 후보)
 
 	@Autowired
-	private BoardDAO boardDAO;
+	private BoardDAOSpring boardDAO;
 	
 //	private LogAdvice log;
 //	private Log4jAdvice log;
