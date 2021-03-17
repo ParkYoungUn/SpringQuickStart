@@ -18,7 +18,7 @@ import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.common.JDBCUtil;
 
 //DAO(Data Access Object)
-@Repository("boardDAO")
+@Repository
 public class BoardDAO extends JdbcDaoSupport {
 	// JDBC 관련 변수
 	private Connection conn = null;
@@ -32,6 +32,11 @@ public class BoardDAO extends JdbcDaoSupport {
 	private final String BOARD_DELETE = "delete board where seq=?";
 	private final String BOARD_GET = "select * from board where seq=?";
 	private final String BOARD_LIST = "select * from board order by seq desc";
+	
+	private final String BOARD_LIST_T = 
+			"select * from board where title like '%'||?||'%' order by seq desc";
+	private final String BOARD_LIST_C = 
+			"select * from board where content like '%'||?||'%' order by seq desc";
 
 	@Autowired
 	public void setSuperDataSource(DataSource dataSource) {
@@ -120,6 +125,16 @@ public class BoardDAO extends JdbcDaoSupport {
 		List<BoardVO> boardList = new ArrayList<BoardVO>();
 		try {
 			conn = JDBCUtil.getConnection();
+			System.out.println("검색테스트1");
+			if(vo.getSearchCondition().equals("TITLE")) {
+				stmt = conn.prepareStatement(BOARD_LIST_T);
+				System.out.println("검색테스트2");
+			} else if (vo.getSearchCondition().equals("CONTENT")) {
+				stmt = conn.prepareStatement(BOARD_LIST_C);
+				System.out.println("검색테스트3");
+			}
+				stmt.setString(1, vo.getSearchKeyword());
+			
 			stmt = conn.prepareStatement(BOARD_LIST);
 			rs = stmt.executeQuery();
 			while (rs.next()) {
