@@ -12,15 +12,18 @@
 	<center>
 		<h1>글 목록</h1>
 		<h3>
-			테스트님 환영합니다...<a href="logout.do">Log-out</a>
+			${userName}님! 게시판에 오신것을 환영합니다... <a href="logout.do">Log-out</a>
 		</h3>
 		<!-- 검색 시작 -->
-		<form action="getBoarList.do" method="post">
+		<form action="getBoardList.do" method="post">
 			<table border="1" cellpadding="0" cellspacing="0" width="700">
 				<tr>
 					<td align="right"><select name="searchCondition">
-							<option value="TITLE">제목</option>
-							<option value="CONTENT">내용</option>
+							<c:forEach items="${conditionMap}" var="option">
+								<option value="${option.value}">${option.key}
+							</c:forEach>
+							<!-- <option value="TITLE">제목</option>
+							<option value="CONTENT">내용</option> -->
 					</select> <input name="serchKeyword" type="text" /> <input type="submit"
 						value="검색" /></td>
 				</tr>

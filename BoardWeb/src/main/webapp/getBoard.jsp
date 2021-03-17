@@ -22,7 +22,7 @@
 		<td align="left">${board.writer}</td>
 	</tr>
 	<tr>
-		<td bgcolor="blue">내용</td>
+		<td bgcolor="orange">내용</td>
 		<td align="left"><textarea name="content" rows="10" cols="40">${board.content}</textarea></td>
 	</tr>
 	<tr>
