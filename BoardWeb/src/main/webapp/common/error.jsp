@@ -13,7 +13,7 @@
 </table>
 <br>
 <!-- 에러 메시지 -->
-<table width="100%" border="1" cellspacing="0" cellpadding="0" align="center">
+<table width="50%" border="1" cellspacing="0" cellpadding="0" align="center">
 	<tr>
 		<td align="center">
 		<br><br><br><br><br>

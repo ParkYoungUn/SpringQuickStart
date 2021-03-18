@@ -9,11 +9,11 @@
 <body bgcolor="#ffffff" text="#000000">
 <!-- 타이틀 시작 -->
 <table width="100%" border="1" cellspacing="0" cellpadding="0">
-	<tr><td align="center" bgcolor="orange"><b>기본 에러 화면입니다.</b></td></tr>
+	<tr><td align="center" bgcolor="orange"><b>nullPointerError 화면입니다.</b></td></tr>
 </table>
 <br>
 <!-- 에러 메시지 -->
-<table width="100%" border="1" cellspacing="0" cellpadding="0" align="center">
+<table width="50%" border="1" cellspacing="0" cellpadding="0" align="center">
 	<tr>
 		<td align="center">
 		<br><br><br><br><br>
